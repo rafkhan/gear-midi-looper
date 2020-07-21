@@ -37,6 +37,7 @@ unsigned long t = 0;
 
 void onMidiClock() {
   lastClockTime = micros();
+  Serial.println(String("CLOCK"));
 
   if(clockCounter < _MAX_CLOCK_COUNTER_SIZE) {
     clockCounter++;
@@ -95,7 +96,8 @@ void onMidiNoteOff(int channel, int note, int velocity) {
 }
 
 void setup() {
-  MIDI.begin(MIDI_CHANNEL_OMNI);
+  MIDI.begin(15);
+  MIDI.turnThruOff();
   Serial.begin(57600);
   Serial.println("MIDI Input Test");
 
